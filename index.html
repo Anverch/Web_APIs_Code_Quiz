@@ -6,11 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Quiz</title>
     <!--Link to CSS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="Assets/style.css" />
 </head>
 
-<body>
-
+<body class="d-flex flex-column h-100">
+    <header>
+        <div class="nav-scroller py-1 mb-2">
+            <nav class="nav d-flex justify-content-between">
+                <a class="p-2 text-muted" href="#">View Highscore</a>
+                <a class="p-2 text-muted" href="#">Time:</a>
+            </nav>
+        </div>
+    </header>
+    <section class="container mt-5 pb-3">
+        <div class="row justify-content-center">
+            <div class="col-md-5 bg-light border p-lg-3">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="border-bottom pb-3">Coding Quiz Challenge</h3>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="direction">
+                            <p>Try to answer following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by 10 seconds!</p>
+                        </div>
+                        <div class="direction">
+                            <input class="btn btn-primary" type="submit" value="Start Quiz">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <!--Link to JavaScript-->
     <script src="./Assets/script.js"></script>
 </body>
