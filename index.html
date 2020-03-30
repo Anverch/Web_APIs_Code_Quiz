@@ -8,18 +8,21 @@
     <!--Link to CSS-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="Assets/style.css" />
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 
 <body class="d-flex flex-column h-100">
     <header>
         <div class="nav-scroller py-1 mb-2">
             <nav class="nav d-flex justify-content-between">
-                <a class="p-2 text-muted" href="#">View Highscore</a>
+                <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal">View Highscore</button>
                 <text class="p-2 text-muted">Time: <text id="starttime">90</text></text>
             </nav>
         </div>
     </header>
-    <section class="row justify-content-center">
+    <section id="startPage" class="row justify-content-center">
         <div class="col-md-5 bg-light border p-lg-3">
             <div class="row">
                 <div class="col-md-12">
@@ -30,7 +33,25 @@
                         <p>Try to answer following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by 10 seconds!</p>
                     </div>
                     <div class="direction">
-                        <input class="btn btn-primary" type="submit" value="Start Quiz">
+                        <input id="startquiz" class="btn btn-primary" type="submit" value="Start Quiz">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--question section-->
+    <section id="questionsSection" class="hide row justify-content-center">
+        <div class="col-md-5 bg-light border p-lg-3">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 id="questionHeader" class="border-bottom pb-3">Q1</h3>
+                </div>
+                <div class="col-md-12">
+                    <div class="direction">
+                        <p id="question">What do you want</p>
+                    </div>
+                    <div id="answers" class="direction">
                     </div>
                 </div>
             </div>
@@ -38,6 +59,24 @@
     </section>
     <!--Link to JavaScript-->
     <script src="./Assets/script.js"></script>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>

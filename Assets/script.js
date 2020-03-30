@@ -1,8 +1,10 @@
-var startQuiz = document.querySelector(".btn");
-var startTimer = document.querySelector("#starttime")
+var startQuiz = document.querySelector("#startquiz");
+var startTimer = document.querySelector("#starttime");
 
 function quiz() {
     update = setInterval("timer()", 1000);
+    document.querySelector("#startPage").classList.add("hide");
+    document.querySelector("#questionsSection").classList.remove("hide");
 }
 
 var time = 90;
@@ -12,7 +14,7 @@ function timer() {
     if (time < 90) {
         startTimer.innerHTML = time;
     }
-    if (time < 0) {
+    if (time < 1) {
         window.clearInterval(update);
     }
 }

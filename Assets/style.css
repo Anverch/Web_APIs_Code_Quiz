@@ -5,3 +5,8 @@ h3 {
 .direction {
     text-align: center;
 }
+
+.hide {
+    display: none;
+    visibility: hidden;
+}
