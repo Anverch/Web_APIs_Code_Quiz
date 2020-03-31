@@ -3,7 +3,7 @@ h3 {
 }
 
 .direction {
-    text-align: center;
+    text-align: center !important;
 }
 
 .hide {
