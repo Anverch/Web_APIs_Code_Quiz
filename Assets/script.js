@@ -1,5 +1,21 @@
+var highScoreBtn = document.querySelector("#highScoreBtn");
+var closeModalBtn = null;
 var startQuiz = document.querySelector("#startQuiz");
 var startTimer = document.querySelector("#startTime");
+
+highScoreBtn.addEventListener("click", showModal);
+//function for highscores
+function showModal() {
+    document.querySelector("#highScoreModal").classList.remove("hide");
+    closeModalBtn = document.querySelector("#closeModal");
+    closeModalBtn.addEventListener("click", hideModal);
+}
+
+//function to close the highscores 
+function hideModal() {
+    document.querySelector("#highScoreModal").classList.add("hide");
+}
+
 
 var currentQuestionIndex = 0;
 
