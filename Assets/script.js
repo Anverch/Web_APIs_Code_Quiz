@@ -27,14 +27,15 @@ function startQuiz() {
     displayQuestion(questions[currentQuestionIndex], currentQuestionIndex);
 }
 //Timer 
-var time = 25;
+var time = 90;
+startTimer.innerHTML = time;
 
 /**
  * timer to count down the game time
  */
 function timer() {
     time = time - 1;
-    if (time < 25) {
+    if (time < 90) {
         startTimer.innerHTML = time;
     }
     if (time === 0) {
@@ -91,8 +92,9 @@ function checkAnswer(button, correctAnswer) {
         button.setAttribute("class", "btn-secondary btn btn-block bg-success");
     } else {
         button.setAttribute("class", "btn-secondary btn btn-block bg-danger");
+        time = time - 15;
     }
-    setTimeout(function() { nextQuestion(); }, 2000);
+    setTimeout(function() { nextQuestion(); }, 1500);
 }
 
 function nextQuestion() {
