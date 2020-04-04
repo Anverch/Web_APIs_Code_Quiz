@@ -94,7 +94,7 @@ function checkAnswer(button, correctAnswer) {
         button.setAttribute("class", "btn-secondary btn btn-block bg-danger");
         time = time - 15;
     }
-    setTimeout(function() { nextQuestion(); }, 1500);
+    setTimeout(function() { nextQuestion(); }, 500);
 }
 
 function nextQuestion() {
@@ -105,9 +105,26 @@ function nextQuestion() {
         displayQuestion(questions[currentQuestionIndex], currentQuestionIndex);
 
     } else {
-        alert("END");
+        document.querySelector("#startPage").classList.add("hide");
+        document.querySelector("#questionsSection").classList.add("hide");
+        document.querySelector("#saveScore").classList.remove("hide");
+        var endTime = time;
+        var finalScore = document.querySelector("#finalScore");
+
+        finalScore.innerHTML = endTime;
+        window.clearInterval(update);
+        var submitScoreBtn = document.querySelector("#submitScore");
+
+        var userInitialsInput = document.querySelector("#userInitials");
+        submitScoreBtn.addEventListener("click", function() {
+            submitFinalScore(userInitialsInput.value, endTime);
+        });
     }
 
+}
+
+function submitFinalScore(userInitial, endTime) {
+    alert(userInitial + " " + endTime);
 }
 
 
