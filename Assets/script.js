@@ -9,13 +9,19 @@ function showModal() {
     document.querySelector("#highScoreModal").classList.remove("hide");
     closeModalBtn = document.querySelector("#closeModal");
     closeModalBtn.addEventListener("click", hideModal);
+    var listOfHighScores = document.querySelector("#listOfHighScores");
+    var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+    for (var i = 0; i < highScores.length; i++) {
+        listOfHighScores.innerHTML = listOfHighScores.innerHTML + highScores[i].userInitial + " " + highScores[i].endTime + "<br>";
+
+    }
+
 }
 
 //function to close the highscores 
 function hideModal() {
     document.querySelector("#highScoreModal").classList.add("hide");
 }
-
 
 var currentQuestionIndex = 0;
 
@@ -45,11 +51,8 @@ function timer() {
 }
 
 function stopInterval() {
-    alert("Time is Up");
+    showFinalScoreDiv();
 }
-
-
-
 
 //Starts the Quiz
 startQuizBtn.addEventListener("click", startQuiz);
@@ -76,13 +79,11 @@ function displayQuestion(question, index) {
         element.setAttribute("class", "row p-1");
         answersDiv.appendChild(element);
 
-
         // When clicked, checks for answer
         button.addEventListener("click", function() {
             checkAnswer(button, question.answer);
         });
     });
-
 
 }
 //comparing user input to the correct answer 
@@ -105,29 +106,28 @@ function nextQuestion() {
         displayQuestion(questions[currentQuestionIndex], currentQuestionIndex);
 
     } else {
-        document.querySelector("#startPage").classList.add("hide");
-        document.querySelector("#questionsSection").classList.add("hide");
-        document.querySelector("#saveScore").classList.remove("hide");
-        var endTime = time;
-        var finalScore = document.querySelector("#finalScore");
-
-        finalScore.innerHTML = endTime;
-        window.clearInterval(update);
-        var submitScoreBtn = document.querySelector("#submitScore");
-
-        var userInitialsInput = document.querySelector("#userInitials");
-        submitScoreBtn.addEventListener("click", function() {
-            submitFinalScore(userInitialsInput.value, endTime);
-        });
+        showFinalScoreDiv();
     }
 
 }
 
-function submitFinalScore(userInitial, endTime) {
-    alert(userInitial + " " + endTime);
+function showFinalScoreDiv() {
+    document.querySelector("#startPage").classList.add("hide");
+    document.querySelector("#questionsSection").classList.add("hide");
+    document.querySelector("#saveScore").classList.remove("hide");
+    var endTime = time;
+    var finalScore = document.querySelector("#finalScore");
+
+    finalScore.innerHTML = endTime;
+    window.clearInterval(update);
+    var submitScoreBtn = document.querySelector("#submitScore");
+
+    var userInitialsInput = document.querySelector("#userInitials");
+    submitScoreBtn.addEventListener("click", function() {
+        submitFinalScore(userInitialsInput.value, endTime);
+
+    });
 }
-
-
 // Array of questions/answers 
 var questions = [{
         questionText: 'In JS, what opens up a yes/no dialog and returns true/false depending on user click.',
@@ -166,3 +166,13 @@ var questions = [{
         answer: 'classes'
     }
 ]
+
+function submitFinalScore(userInitial, endTime) {
+    var highScore = {
+        userInitial: userInitial,
+        endTime: endTime
+    };
+    var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+    highScores.push(highScore);
+    localStorage.setItem("highScores", JSON.stringify(highScores));
+}
