@@ -1,4 +1,3 @@
-var closeModalBtn = null;
 var time = 90;
 var currentQuestionIndex = 0;
 // Array of questions/answers 
@@ -50,27 +49,9 @@ highScoreBtn.addEventListener("click", showHighScoresModal);
 // Sets initial time
 startTimer.innerHTML = time;
 
-
-// function for highscores
-function showHighScoresModal() {
-    document.querySelector("#highScoreModal").classList.remove("hide");
-    closeModalBtn = document.querySelector("#closeModal");
-    closeModalBtn.addEventListener("click", hideHighScoresModal);
-    var listOfHighScores = document.querySelector("#listOfHighScores");
-    var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
-    for (var i = 0; i < highScores.length; i++) {
-        listOfHighScores.innerHTML = listOfHighScores.innerHTML + highScores[i].userInitial + " " + highScores[i].endTime + "<br>";
-
-    }
-}
-
-// Hides high score modal
-function hideHighScoresModal() {
-    document.querySelector("#highScoreModal").classList.add("hide");
-}
-
 function startQuiz() {
     update = setInterval(updateTime, 1000);
+
     document.querySelector("#startQuizSection").classList.add("hide");
     document.querySelector("#questionsSection").classList.remove("hide");
 
@@ -89,6 +70,25 @@ function updateTime() {
         showFinalScoreSection();
         window.clearInterval(update);
     }
+}
+
+// function for highscores
+function showHighScoresModal() {
+    document.querySelector("#highScoreModal").classList.remove("hide");
+
+    var closeModalBtn = document.querySelector("#closeModal");
+    closeModalBtn.addEventListener("click", hideHighScoresModal);
+
+    var listOfHighScores = document.querySelector("#listOfHighScores");
+    var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+    for (var i = 0; i < highScores.length; i++) {
+        listOfHighScores.innerHTML = listOfHighScores.innerHTML + highScores[i].userInitial + " " + highScores[i].endTime + "<br>";
+    }
+}
+
+// Hides high score modal
+function hideHighScoresModal() {
+    document.querySelector("#highScoreModal").classList.add("hide");
 }
 
 // Function for the question section
@@ -124,17 +124,19 @@ function displayQuestionAndAnswers(question, index) {
 // Comparing user input to the correct answer 
 function checkAnswer(button, correctAnswer) {
     var userAnswer = button.innerHTML;
+
     if (userAnswer === correctAnswer) {
         button.setAttribute("class", "btn-secondary btn btn-block bg-success");
     } else {
         button.setAttribute("class", "btn-secondary btn btn-block bg-danger");
         time = time - 15;
     }
+
     setTimeout(function() { displayNextQuestion(); }, 500);
 }
 
 function displayNextQuestion() {
-    if (currentQuestionIndex < 3) {
+    if (currentQuestionIndex < questions.length - 1) {
         currentQuestionIndex += 1;
         var answersDiv = document.querySelector("#answers");
         answersDiv.innerHTML = ""
@@ -145,17 +147,19 @@ function displayNextQuestion() {
 }
 
 function showFinalScoreSection() {
-    document.querySelector("#startQuizSection").classList.add("hide");
-    document.querySelector("#questionsSection").classList.add("hide");
-    document.querySelector("#saveScoreSection").classList.remove("hide");
     var endTime = time;
     var finalScore = document.querySelector("#finalScore");
 
+    document.querySelector("#startQuizSection").classList.add("hide");
+    document.querySelector("#questionsSection").classList.add("hide");
+    document.querySelector("#saveScoreSection").classList.remove("hide");
+
     finalScore.innerHTML = endTime;
     window.clearInterval(update);
-    var submitScoreBtn = document.querySelector("#submitScore");
 
+    var submitScoreBtn = document.querySelector("#submitScore");
     var userInitialsInput = document.querySelector("#userInitials");
+
     submitScoreBtn.addEventListener("click", function() {
         submitFinalScore(userInitialsInput.value, endTime);
     });
@@ -166,7 +170,9 @@ function submitFinalScore(userInitial, endTime) {
         userInitial: userInitial,
         endTime: endTime
     };
+
     var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+
     highScores.push(highScore);
     localStorage.setItem("highScores", JSON.stringify(highScores));
 }

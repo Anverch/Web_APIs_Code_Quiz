@@ -59,10 +59,17 @@
 
     <!-- High score modal -->
     <div id="highScoreModal" class="customModal hide">
-        <div class="customModalContent">
-            <h2>High Scores</h2>
-            <button id="closeModal"><span class="close">&times;</span></button>
-            <div id="listOfHighScores">
+        <div class="container pt-3 customModalContent">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 class="float-left p-0 m-0">High Scores</h2>
+                </div>
+                <div class="col-md-6">
+                    <button id="closeModal" class="float-right"><span class="close">&times;</span></button>
+                </div>
+                <div class="col-md-12 text-left pt-2">
+                    <div id="listOfHighScores"></div>
+                </div>
             </div>
         </div>
     </div>
