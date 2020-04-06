@@ -15,7 +15,6 @@ function showModal() {
         listOfHighScores.innerHTML = listOfHighScores.innerHTML + highScores[i].userInitial + " " + highScores[i].endTime + "<br>";
 
     }
-
 }
 
 //function to close the highscores 
@@ -27,7 +26,7 @@ var currentQuestionIndex = 0;
 
 function startQuiz() {
     update = setInterval(timer, 1000);
-    document.querySelector("#startPage").classList.add("hide");
+    document.querySelector("#startQuizSection").classList.add("hide");
     document.querySelector("#questionsSection").classList.remove("hide");
 
     displayQuestion(questions[currentQuestionIndex], currentQuestionIndex);
@@ -112,9 +111,9 @@ function nextQuestion() {
 }
 
 function showFinalScoreDiv() {
-    document.querySelector("#startPage").classList.add("hide");
+    document.querySelector("#startQuizSection").classList.add("hide");
     document.querySelector("#questionsSection").classList.add("hide");
-    document.querySelector("#saveScore").classList.remove("hide");
+    document.querySelector("#saveScoreSection").classList.remove("hide");
     var endTime = time;
     var finalScore = document.querySelector("#finalScore");
 

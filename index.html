@@ -5,13 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Quiz</title>
-    <!--Link to CSS-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="Assets/style.css" />
-
 </head>
 
 <body class="d-flex flex-column h-100">
+    <!-- Header to display high scores and Time -->
     <header>
         <div class="nav-scroller py-1 mb-2">
             <nav class="nav d-flex justify-content-between">
@@ -20,7 +19,9 @@
             </nav>
         </div>
     </header>
-    <section id="startPage" class="row justify-content-center">
+
+    <!-- Section to start quiz -->
+    <section id="startQuizSection" class="row justify-content-center">
         <div class="col-md-5 bg-light border p-lg-3">
             <div class="row">
                 <div class="col-md-12">
@@ -38,7 +39,7 @@
         </div>
     </section>
 
-    <!--question section-->
+    <!-- Question section -->
     <section id="questionsSection" class="hide row justify-content-center">
         <div class="col-md-5 bg-light border p-lg-3">
             <div class="row">
@@ -55,11 +56,9 @@
             </div>
         </div>
     </section>
-    <!--Link to JavaScript-->
-    <script src="./Assets/script.js"></script>
 
-    <!-- Modal -->
-    <div class="customModal hide" id="highScoreModal">
+    <!-- High score modal -->
+    <div id="highScoreModal" class="customModal hide">
         <div class="customModalContent">
             <h2>High Scores</h2>
             <button id="closeModal"><span class="close">&times;</span></button>
@@ -68,7 +67,8 @@
         </div>
     </div>
 
-    <section id="saveScore" class="hide row justify-content-center">
+    <!-- Section to save high score -->
+    <section id="saveScoreSection" class="row justify-content-center hide">
         <div class="col-md-5 bg-light border p-lg-3">
             <h3 class="border-bottom pb-3">All Done</h3>
             <p>Your final score is <span id="finalScore">0</span></p>
@@ -85,6 +85,8 @@
         </div>
     </section>
 
+    <!-- Link to JavaScript -->
+    <script src="./Assets/script.js"></script>
 </body>
 
 </html>
