@@ -72,7 +72,7 @@ function updateTime() {
     }
 }
 
-// function for highscores
+// Function for high scores
 function showHighScoresModal() {
     document.querySelector("#highScoreModal").classList.remove("hide");
 
@@ -121,7 +121,7 @@ function displayQuestionAndAnswers(question, index) {
 
 }
 
-// Comparing user input to the correct answer 
+// Compares user input to the correct answer 
 function checkAnswer(button, correctAnswer) {
     var userAnswer = button.innerHTML;
 
@@ -135,6 +135,7 @@ function checkAnswer(button, correctAnswer) {
     setTimeout(function() { displayNextQuestion(); }, 500);
 }
 
+// Displays the next question
 function displayNextQuestion() {
     if (currentQuestionIndex < questions.length - 1) {
         currentQuestionIndex += 1;
@@ -146,6 +147,7 @@ function displayNextQuestion() {
     }
 }
 
+// Shows the final section where user puts initials + score(time left)
 function showFinalScoreSection() {
     var endTime = time;
     var finalScore = document.querySelector("#finalScore");
@@ -165,6 +167,7 @@ function showFinalScoreSection() {
     });
 }
 
+// Submits the user initials with time left(score) to local storage adn high score section
 function submitFinalScore(userInitial, endTime) {
     var highScore = {
         userInitial: userInitial,
